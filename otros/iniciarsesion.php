@@ -58,7 +58,13 @@
         <div class="col-md-1">
         </div>
         <div class="col-md-5 relative align-self-center">
-          <form action="#" method="POST" class="bg-white rounded pb_form_v1">
+        <?php
+            if( !empty( $_GET[ 'success' ] ) && ( $_GET[ 'success' ] == FALSE ) ){
+              $message = "Username and/or Password incorrect.\\nTry again.";
+              echo "<script type='text/javascript'>alert('$message');</script>";
+            }
+          ?>
+          <form action="login.php" method="POST" class="bg-white rounded pb_form_v1">
             <h2 class="mb-4 mt-0 text-center">Iniciar Sesión</h2>
             <div class="form-group">
               <input type="email" name="email" class="form-control pb_height-50 reverse" placeholder="Email">
@@ -78,7 +84,7 @@
               </div>
             </div>
           </form>
-
+          
         </div>
       </div>
     </div>

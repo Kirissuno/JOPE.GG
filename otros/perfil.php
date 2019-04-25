@@ -60,7 +60,11 @@
         <div class="container">
             <div class="row align-items-center justify-content-center">
                 
-                Este es mi perfil    
+                <?php
+                
+                    include 'login.php';
+
+                ?>
 
             </div>
         </div>
