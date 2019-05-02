@@ -1,20 +1,25 @@
 <?php
-    include 'Conexion.php';
+    include_once 'Conexion.php';
+    
+    
 
-    $conexion = OpenCon();
+    if(isset($_POST["enviarregistro"])){
+        
 
-    $email = $_POST['email'];
-    $nombre = $_POST['usuario'];
-    $contrasena = $_POST['contrasena'];
+        $conexion = OpenCon();
+        $email = strtolower($_POST['email']);
+        $nombre = $_POST['usuario'];
+        $rutaimg = '../assets/images/profile.png';
+        $contrasena = $_POST['contrasena'];
 
-    $registrar = "INSERT INTO usuarios (email, nombre, contrasena, imgperfil) values 
-            ('$email', '$nombre', '$contrasena', 'null')";
+        $registrar = "INSERT INTO usuarios (email, nombre, contrasena, imgperfil) values 
+            ('$email', '$nombre', '$contrasena', '$rutaimg')";
 
-    if(mysqli_query($conexion, $registrar) === true){
-        header('Location: iniciarsesion.php');
-    }else{
-        header('Location: registrarse.html');
+        if(mysqli_query($conexion, $registrar) === true){
+            header('Location: iniciarsesion.php');
+        }else{
+            header('Location: registrarse.php?error=1');
+        }
+        CloseCon($conexion);
     }
-
-    CloseCon($conexion);
     

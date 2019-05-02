@@ -36,9 +36,38 @@
       </button>
       <div class="collapse navbar-collapse" id="probootstrap-navbar">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item"><a class="nav-link" href="logeado.html#section-home">Inicio</a></li>
+        <?php
+            include "login.php";
+
+            if(isset($_SESSION["usuario"])){
+              echo '<li class="nav-item"><a class="nav-link" href="logeado.php#section-home">Inicio</a></li>';
+            }else{
+              echo '<li class="nav-item"><a class="nav-link" href="../index.html#section-home">Inicio</a></li>';
+            }
+        ?>
+          
           <li class="nav-item"><a class="nav-link" href="#">Galería</a></li>
-          <li class="nav-item"><a class="nav-link" href="logeado.html#section-reviews">Sobre Nosotros</a></li>
+          <?php
+            if(isset($_SESSION["usuario"])){
+              echo '<li class="nav-item"><a class="nav-link" href="logeado.php#section-reviews">Sobre Nosotros</a></li>
+              <li class="nav-item"><a class="nav-link" href="perfil.php">Mi Perfil</a></li>
+              ';
+            }else{
+              echo '<li class="nav-item"><a class="nav-link" href="../index.html#section-reviews">Sobre nosotros</a></li>';
+            }
+          ?>
+          
+          
+          <?php
+            if(isset($_SESSION["usuario"])){
+              echo '<li class="nav-item cta-btn ml-xl-2 ml-lg-2 ml-md-0 ml-sm-0 ml-0"><a class="nav-link"
+              href="cierrasesion.php"><span class="pb_rounded-4 px-4">Cerrar sesión</span></a></li>';
+            }else{
+              echo '<li class="nav-item cta-btn ml-xl-2 ml-lg-2 ml-md-0 ml-sm-0 ml-0"><a class="nav-link"
+              href="iniciarsesion.php"><span class="pb_rounded-4 px-4">Iniciar sesión</span></a></li>';
+            }
+
+          ?>
         </ul>
       </div>
     </div>

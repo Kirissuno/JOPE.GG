@@ -41,7 +41,7 @@
       <div class="collapse navbar-collapse" id="probootstrap-navbar">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item"><a class="nav-link" href="../index.html#section-home">Inicio</a></li>
-          <li class="nav-item"><a class="nav-link" href="galeria.html">Galería</a></li>
+          <li class="nav-item"><a class="nav-link" href="galeria.php">Galería</a></li>
           <li class="nav-item"><a class="nav-link" href="../index.html#section-reviews">Sobre Nosotros</a></li>
         </ul>
       </div>
@@ -58,12 +58,6 @@
         <div class="col-md-1">
         </div>
         <div class="col-md-5 relative align-self-center">
-        <?php
-            if( !empty( $_GET[ 'success' ] ) && ( $_GET[ 'success' ] == FALSE ) ){
-              $message = "Username and/or Password incorrect.\\nTry again.";
-              echo "<script type='text/javascript'>alert('$message');</script>";
-            }
-          ?>
           <form action="login.php" method="POST" class="bg-white rounded pb_form_v1">
             <h2 class="mb-4 mt-0 text-center">Iniciar Sesión</h2>
             <div class="form-group">
@@ -78,13 +72,22 @@
                 class="btn btn-primary btn-lg btn-block pb_btn-pill  btn-shadow-blue" value="Entrar">
               <p></p>
               <div class="text-center">
-                <a href="registrarse.html">
+                <a href="registrarse.php">
                   <p style="color: teal">¿No tienes una cuenta?</p>
                 </a>
-              </div>
+
+                <?php
+                include_once ('login.php');
+
+                if(isset($_SESSION["error"]) && $_SESSION["error"] == 1){
+                  echo "<span style='color:red'> Usuario y/o contraseña incorrecta </span>";
+                }
+
+                session_destroy();
+              ?>
+              </div> 
             </div>
-          </form>
-          
+          </form> 
         </div>
       </div>
     </div>

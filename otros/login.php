@@ -3,10 +3,9 @@
     session_start();
     if (isset($_POST['iniciarsesion'])){
         $conexion = OpenCon();
-    
-        $email = $_POST['email'];
+        $email = strtolower($_POST['email']);
         $contrasena = $_POST['contrasena'];
-    
+        
         echo $email."   ".$contrasena."<br>";
     
         $consulta = "SELECT email, nombre, contrasena, imgperfil from usuarios where email like '$email' and contrasena like '$contrasena'";
@@ -28,7 +27,8 @@
                 $_SESSION["img"] = $campos[3];
                 header ('Location: perfil.php');
             }else{
-                header('location:iniciarsesion.php?success=false');
+                $_SESSION["error"] = 1;
+                header('location:iniciarsesion.php');
             }
             mysqli_stmt_close($sentencia);
         }

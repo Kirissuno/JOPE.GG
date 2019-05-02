@@ -42,7 +42,7 @@
             <div class="collapse navbar-collapse" id="probootstrap-navbar">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item"><a class="nav-link" href="../index.html#section-home">Inicio</a></li>
-                    <li class="nav-item"><a class="nav-link" href="galeria.html">Galería</a></li>
+                    <li class="nav-item"><a class="nav-link" href="galeria.php">Galería</a></li>
                     <li class="nav-item"><a class="nav-link" href="../index.html#section-reviews">Sobre Nosotros</a>
                     </li>
                 </ul>
@@ -64,15 +64,15 @@
                         <h2 class="mb-4 mt-0 text-center">Regístrate Grátis</h2>
                         <div class="form-group">
                             <input type="text" name="usuario" class="form-control pb_height-50 reverse"
-                                placeholder="Nombre de usuario">
+                                placeholder="Nombre de usuario" required>
                         </div>
                         <div class="form-group">
                             <input type="email" name="email" class="form-control pb_height-50 reverse"
-                                placeholder="Email">
+                                placeholder="Email" required>
                         </div>
                         <div class="form-group">
                             <input type="password" name="contrasena" class="form-control pb_height-50 reverse"
-                                placeholder="Contraseña">
+                                placeholder="Contraseña" required>
                         </div>
                         <div class="form-group">
                             <input type="submit" name="enviarregistro"
@@ -83,9 +83,15 @@
                             <a href="iniciarsesion.php">
                                 <p style="color: teal">¿Ya tienes una cuenta?</p>
                             </a>
+                            <?php
+                                if(isset($_GET["error"]) && $_GET["error"] == 1){
+                                echo "<span style='color:red'> Correo electrónico ya en uso </span>";
+                                }
+                            ?>
                         </div>
+                        
                     </form>
-
+                    
                 </div>
             </div>
         </div>

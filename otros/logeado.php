@@ -72,7 +72,7 @@
           <li class="nav-item"><a class="nav-link" href="#section-reviews">Sobre Nosotros</a></li>
           <li class="nav-item"><a class="nav-link" href="perfil.php">Mi Perfil</a></li>
           <li class="nav-item cta-btn ml-xl-2 ml-lg-2 ml-md-0 ml-sm-0 ml-0"><a class="nav-link"
-              href="../index.html"><span class="pb_rounded-4 px-4">Cerrar sesión</span></a></li>
+              href="cierrasesion.php"><span class="pb_rounded-4 px-4">Cerrar sesión</span></a></li>
         </ul>
       </div>
     </div>
@@ -128,7 +128,7 @@
         </div>
 
       </div>
-      <p class="mb-5"><a class="btn btn-success btn-lg pb_btn-pill smoothscroll" href="galeria.html"><span
+      <p class="mb-5"><a class="btn btn-success btn-lg pb_btn-pill smoothscroll" href="galeria.php"><span
             class="pb_font-14 text-uppercase pb_letter-spacing-1">Ver todas las imágenes</span></a></p>
     </div>
   </section>

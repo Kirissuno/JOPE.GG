@@ -30,6 +30,11 @@
 
 <body data-spy="scroll" data-offset="200">
 
+    <?php
+        include "login.php";
+    ?>
+
+
     <!--Cabecera-->
     <nav class="navbar navbar-expand-lg navbar-dark pb_navbar pb_scrolled-light" id="pb-navbar">
         <div class="container">
@@ -41,12 +46,12 @@
             </button>
             <div class="collapse navbar-collapse" id="probootstrap-navbar">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item"><a class="nav-link" href="logeado.html">Inicio</a></li>
-                    <li class="nav-item"><a class="nav-link" href="galeria.html">Galería</a></li>
-                    <li class="nav-item"><a class="nav-link" href="logeado.html#section-reviews">Sobre Nosotros</a>
+                    <li class="nav-item"><a class="nav-link" href="logeado.php">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="galeria.php">Galería</a></li>
+                    <li class="nav-item"><a class="nav-link" href="logeado.php#section-reviews">Sobre Nosotros</a>
                     </li>
                     <li class="nav-item cta-btn ml-xl-2 ml-lg-2 ml-md-0 ml-sm-0 ml-0"><a class="nav-link"
-              href="../index.html"><span class="pb_rounded-4 px-4">Cerrar sesión</span></a></li>
+              href="cierrasesion.php"><span class="pb_rounded-4 px-4">Cerrar sesión</span></a></li>
                 </ul>
             </div>
         </div>
@@ -58,14 +63,42 @@
     <section class="pb_cover_v3 overflow-hidden cover-bg-indigo cover-bg-opacity pb_gradient_v1 pb_slant-white"
         id="section-home">
         <div class="container">
-            <div class="row align-items-center justify-content-center">
-                
-                <?php
-                
-                    include 'login.php';
+            <div class="row align-items-center">
+                <div>
+                    
+                    <?php
+                        $img = $_SESSION["img"];
+                        $nombre = $_SESSION["usuario"]; 
+                        echo '
+                        <style>
+                            div.inline { float:left; }
+                            .clearBoth { clear:both; }
 
-                ?>
-
+                        </style>
+                        
+                        <div class="inline" >
+                            <img src="'.$img.'" width=250px height=250px>
+                            <form action="fotoperfil.php" method="POST">
+                                <input type="file" name="file" style="color: transparent">
+                                <br>
+                                <input type="submit" value="Cambiar imagen">
+                            </form>
+                        </div>
+                        <div class="inline">
+                            <h1>'.$nombre.'</h1>
+                        </div>
+                        <br class="clearBoth" />';
+                    ?>
+            
+            
+                    <?php
+                        
+                        echo "<br>
+                            <div>
+                                <p>Entrar a mi galería</p>
+                            </div>";
+                    ?>
+                </div>
             </div>
         </div>
     </section>
